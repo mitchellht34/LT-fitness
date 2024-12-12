@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>
+            Survey Page
+        </title>
+
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src='/client/js/survey-page.js' async></script>
+    </head>
+
+    <body>
+        <h1>Survey Page</h1>
+        <div class="topnav">
+            <a href="home">Home</a>
+            <a class="active" href="survey">Survey</a>
+            <!-- <a href="meals">Meals</a> -->
+            <a href="workouts">Workouts</a>
+        </div>
+        <form action="/questionnaire" method="post">
+            <h2>Questionnaire</h2>
+            <div>
+                <p>Do you have experience exercising?</p>
+                <input type="radio" id="yes" value=1 name="experience"/>
+                <label for="yes">Yes</label>
+                <input type="radio" id="no" value=0 name="experience"/>
+                <label for="no">No</label>
+                <p>If yes, please explain (if not, type n/a)</p>
+                <input type="text" />
+                <p>Why do you want to work out/ What are your goals?</p>
+                <input type="text" />
+                <p>Which of these interest you in a program?</p>
+                <div>
+                    <input type="radio" id="hpyertrophy" name="goal"/>
+                    <label for="hypertrophy">Hypertrophy (strictly muscle building)</label>
+                </div>
+                <div>
+                    <input type="radio" id="stronger" name="goal"/>
+                    <label for="stronger">Getting stronger</label>
+                </div>
+                <div>
+                    <input type="radio" id="lifting" name="goal"/>
+                    <label for="lifting">Powerlifting (increasing squat, bench, deadlift)</label>
+                </div>
+                <div>
+                    <input type="radio" id="performance" name="goal"/>
+                    <label for="performance">Performance based exercise (for athletic performance)</label>
+                </div>
+                <div>
+                    <input type="radio" id="loss" name="goal"/>
+                    <label for="loss">Losing weight</label>
+                </div>
+                <div>
+                    <input type="radio" id="gain" name="goal"/>
+                    <label for="gain">Gaining weight</label>
+                </div>
+                <div>
+                    <input type="radio" id="flexibility" name="goal"/>
+                    <label for="flexibility">Increasing flexibility</label>
+                </div>
+                <p>On a scale from 1-5, how confortable are you in the gym?</p>
+                <input type="radio" id="1" value=1 name="comfort"/>
+                <label for="1">1</label>
+                <input type="radio" id="2" value=2 name="comfort"/>
+                <label for="2">2</label>
+                <input type="radio" id="3" value=3 name="comfort"/>
+                <label for="3">3</label>
+                <input type="radio" id="4" value=4 name="comfort"/>
+                <label for="4">4</label>
+                <input type="radio" id="5" value=5 name="comfort"/>
+                <label for="5">5</label>
+                <p>Do you have any current injuries/past I should know about?</p>
+                <input type="text" />
+                <p>Would you be interested in a meal plan?</p>
+                <input type="radio" id="yes" value=1 name="experience"/>
+                <label for="yes">Yes</label>
+                <input type="radio" id="no" value=0 name="experience"/>
+                <label for="no">No</label>
+                <br/>
+                <br/>
+                <input id="submit" type="submit" value="Submit"/>
+            </div>
+        </form>
+    </body>
+</html>

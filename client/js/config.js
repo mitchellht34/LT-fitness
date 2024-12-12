@@ -1,0 +1,1 @@
+var exerciseURL = 'http://localhost:5000';

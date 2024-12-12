@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>
+            Log In Page
+        </title>
+
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <form action="/auth" method="post">
+            <div class="imgcontainer">
+            </div>
+          
+            <div class="container">
+              <h1>LT FITNESS</h1>
+              <h2>Log In</h2>
+              <label for="username"><b>Username</b></label>
+              <input type="text" placeholder="Enter Username" name="username" required>
+          
+              <label for="password"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="password" required>
+          
+              <button type="submit">Login</button>
+            </div>
+          
+            <div class="container" style="background-color:#f1f1f1">
+              <!-- <span class="password">Forgot <a href="forgot">password?</a></span> -->
+              <span class="password">New User? <a href="sign-up">Sign Up</a></span>
+            </div>
+        </form>
+    </body>
+</html>
