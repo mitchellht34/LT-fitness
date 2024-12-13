@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>
+            Workouts Page
+        </title>
+
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="/client/js/config.js"></script>
+        <script src='/client/js/workouts-page.js' async></script>
+    </head>
+
+    <body>
+        <h1>Workouts Page</h1>
+        <div class="topnav">
+            <a href="home">Home</a>
+            <a href="survey">Surveys</a>
+            <!-- <a href="meals">Meals</a> -->
+            <!-- <a href="admin">Admin</a> -->
+            <a class="active" href="workout">Workouts</a>
+        </div>
+        <main class="page-content">
+            <div class="col-xs-11">
+                <table id="exerciseTableContainer" class="tablesorter">
+                    <colgroup>
+                        <col class=''>
+                    </colgroup>
+                    <thead>
+                        <tr class='table-headerRow'>
+                            <!-- <th >ID</th> -->
+                            <!-- <th>Name</th> -->
+                            
+                        </tr>
+                    </thead>
+                    <tbody id='exerciseTable'>
+                        <!-- <button class='delete-button' hidden></button> -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </body>
+</html>
