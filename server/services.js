@@ -193,12 +193,12 @@ app.get('/home', function(req, res) {
           connection.query(`
             SELECT workout_plan.workout_plan_id, exercises.exercise_name
             FROM users
-	        JOIN workout_plan
-		        ON workout_plan.routine = users.routine
-            JOIN exercise_plan_workouts
-		        ON workout_plan.workout_plan_id = exercise_plan_workouts.workout_plan_id
-	        JOIN exercises
-		        ON exercises.exercise_id = exercise_plan_workouts.exercise_id
+	            JOIN workout_plan
+		            ON workout_plan.routine = users.routine
+              JOIN exercise_plan_workouts
+		            ON workout_plan.workout_plan_id = exercise_plan_workouts.workout_plan_id
+	            JOIN exercises
+		            ON exercises.exercise_id = exercise_plan_workouts.exercise_id
             WHERE user_id = ?`, currentUser
             , function(err, rows) {
               if(err) {
@@ -210,6 +210,24 @@ app.get('/home', function(req, res) {
               }
           });    
     });
+
+    app.get('/read-surveys', function(req, res) {
+      console.log("user " + currentUser);
+      connection.query(`
+        SELECT survey.survey_id, experience, exp_explained, goals_explained, goals, comfort, injuries, meal_interest, user_id, username
+        FROM survey
+          JOIN users
+            ON users.survey_id = survey.survey_id`
+        , function(err, rows) {
+          if(err) {
+              throw err;
+          } else {
+            console.log("Read Records");
+            // connection.end();
+            return res.status(201).send(JSON.stringify({msg:"SUCCESS", surveys:rows}));
+          }
+      });    
+});
 
     /*app.get('/read-records', function(req, res) {
         connection.query("SELECT * FROM exercises", function(err, rows) {
