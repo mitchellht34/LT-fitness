@@ -18,7 +18,7 @@ function retrieveData() {
 
 function createExerciseTable(exerciseData) {
     console.log(exerciseData);
-
+    
     var tableHTML = "";
     var day = exerciseData[0].workout_plan_id;
     tableHTML += "<tr>";
