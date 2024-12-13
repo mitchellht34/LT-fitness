@@ -56,6 +56,16 @@ var router = function(app) {
         // res.end();
     });
 
+    app.get('/admin', function(req, res) {
+        if (req.session.loggedin && req.session.admin) {
+            // res.send('Welcome back, ' + req.session.username + '!');
+            res.status(200).sendFile(path.join(__dirname + "/../client/html/admin-page.html"));
+        } else {
+            res.send('Must be an admin to view this page!');
+        }
+        // res.end();
+    });
+
     // app.get('/browse-records', function(req, res) {
     //     res.status(200).sendFile(path.join(__dirname + "/../client/html/read-records.html"));
     // })

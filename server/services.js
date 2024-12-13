@@ -30,6 +30,9 @@ var services_sql = function(app) {
                 req.session.username = username;
                 currentUser = results[0].user_id;
                 console.log(currentUser);
+                if(results[0].admin == 1){
+                    req.session.admin = true;
+                }
                 res.redirect('/home');
             } else {
                 res.send('Incorrect Username and/or Password!');
@@ -56,6 +59,9 @@ app.post('/sign-up', function(req, res) {
               req.session.username = username;
               currentUser = results[0].user_id;
               console.log(currentUser);
+              if(results[0].admin == 1){
+                req.session.admin = true;
+              }
               res.redirect('/home');
             } else if (results != 0 && results[0].password != password){
               res.send("User already exists") 
