@@ -159,6 +159,35 @@ app.get('/home', function(req, res) {
           
     });
 
+    app.post('/questionnaire', function(req, res) {
+
+        var data = {
+            experience: req.body.experience, 
+            exp_explained: req.body.experience_explained, 
+            goals_explained: req.body.goals_explained, 
+            goals: req.body.goal, 
+            comfort: req.body.comfort,
+            injuries: req.body.injuries,
+            meal_interest: req.body.meals
+        };
+        
+        connection.query("INSERT INTO survey SET ?", data, function(err, results) {
+            if(err) {
+                throw err;
+            } else {
+              console.log("Inserted new record");
+              console.log(results.insertId);
+              connection.query('UPDATE users SET survey_id = ? WHERE user_id = ?', [results.insertId, currentUser], function(err, results, fields) {
+                    if (err) throw (err)
+                    console.log("Update user to survey id");
+                })
+              // connection.end();
+              res.redirect('/home');
+            }
+        });
+
+    });
+
     app.get('/read-workouts', function(req, res) {
           console.log("user " + currentUser);
           connection.query(`
