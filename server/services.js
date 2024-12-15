@@ -219,15 +219,36 @@ app.get('/home', function(req, res) {
           JOIN users
             ON users.survey_id = survey.survey_id`
         , function(err, rows) {
-          if(err) {
+            if(err) {
               throw err;
-          } else {
-            console.log("Read Records");
-            // connection.end();
-            return res.status(201).send(JSON.stringify({msg:"SUCCESS", surveys:rows}));
-          }
-      });    
-});
+            } else {
+              console.log("Read Records");
+              // connection.end();
+              return res.status(201).send(JSON.stringify({msg:"SUCCESS", surveys:rows}));
+            }
+          });    
+    });
+
+    app.get('/read-workout-plans', function(req, res) {
+      console.log("user " + currentUser);
+      connection.query(`
+        SELECT *
+        FROM workout_plan
+	        JOIN exercise_plan_workouts
+		        ON exercise_plan_workouts.workout_plan_id = workout_plan.workout_plan_id
+	        JOIN exercises
+		        ON exercises.exercise_id = exercise_plan_workouts.exercise_id
+        ;`
+        , function(err, rows) {
+            if(err) {
+              throw err;
+            } else {
+              console.log("Read Records");
+              // connection.end();
+              return res.status(201).send(JSON.stringify({msg:"SUCCESS", plans:rows}));
+            }
+          });    
+    });
 
     /*app.get('/read-records', function(req, res) {
         connection.query("SELECT * FROM exercises", function(err, rows) {
