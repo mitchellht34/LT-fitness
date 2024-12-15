@@ -197,7 +197,7 @@ app.get('/home', function(req, res) {
     app.get('/read-workouts', function(req, res) {
           console.log("user " + currentUser);
           connection.query(`
-            SELECT workout_plan.workout_plan_id, exercises.exercise_name
+            SELECT exercises.exercise_id, workout_plan.workout_plan_id, exercises.exercise_name, exercises.description, exercises.reps
             FROM users
 	            JOIN workout_plan
 		            ON workout_plan.routine = users.routine
@@ -269,7 +269,7 @@ app.get('/home', function(req, res) {
           if(err) {
               throw err;
           } else {
-            // console.log("Updated workout plan");
+            console.log("Updated workout plan");
             console.log(results);
             // connection.end();
             // res.redirect('/home');
