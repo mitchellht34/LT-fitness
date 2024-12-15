@@ -33,6 +33,9 @@ var services_sql = function(app) {
                 if(results[0].admin == 1){
                     req.session.admin = true;
                 }
+                else{
+                  req.session.admin = false
+                }
                 res.redirect('/home');
             } else {
                 res.send('Incorrect Username and/or Password!');
@@ -61,6 +64,9 @@ app.post('/sign-up', function(req, res) {
               console.log(currentUser);
               if(results[0].admin == 1){
                 req.session.admin = true;
+              }
+              else{
+                req.session.admin = false
               }
               res.redirect('/home');
             } else if (results != 0 && results[0].password != password){
@@ -249,6 +255,28 @@ app.get('/home', function(req, res) {
             }
           });    
     });
+
+    app.post('/assign-workout-plan', function(req, res) {
+
+      console.log("req");
+      console.log(req.body.data_id);
+      console.log(req.body.routine_value);
+      // console.log("res");
+      // console.log(res);
+      
+      // connection.query('SELECT * FROM users WHERE user_id = ?', [req.body.data_id], function(err, results, fields) {      
+      connection.query('UPDATE users SET routine = ? WHERE user_id = ?', [req.body.routine_value, req.body.data_id], function(err, results, fields) {
+          if(err) {
+              throw err;
+          } else {
+            // console.log("Updated workout plan");
+            console.log(results);
+            // connection.end();
+            // res.redirect('/home');
+          }
+      });
+
+  });
 
     /*app.get('/read-records', function(req, res) {
         connection.query("SELECT * FROM exercises", function(err, rows) {

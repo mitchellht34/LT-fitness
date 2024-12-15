@@ -37,15 +37,48 @@ function createExerciseTable(data) {
         // tableHTML += "<td>" + exerciseData[i].publisher + "</td>";
         // tableHTML += "<td>" + exerciseData[i].yearPublished + "</td>";
         // tableHTML += "<td>" + exerciseData[i].isbn + "</td>";
-        // tableHTML += "<td>" 
-        //             +"<button class='btn btn-sm edit_btn delete-button' "
-        //             + "data-id='" + exerciseData[i].ID 
-        //             + "'>DELETE</button>"
-        //             + "</td>";
+        tableHTML += "<td>"
+                    + "<input type='number' min=0 max=3 id='" + data[i].user_id + "'/>";
+        
+        tableHTML += "<button class='btn btn-sm edit_btn delete-button' "
+                    + "data-id='" + data[i].user_id 
+                    + "'>Assign Plan</button>"
+                    + "</td>";
         tableHTML += "</tr>";
     }
 
     $("#exerciseTable").html(tableHTML);
     
-    // activateDelete();
+    activateDelete();
+}
+
+function activateDelete() {
+    $('.delete-button').click(function(event) {
+        var data_id = this.getAttribute("data-id");
+        var routine_value = this.previousSibling.value;
+  
+        // console.log(deleteID);
+        console.log(event.target.previousSibling.value)
+  
+            
+        $.ajax({
+        url: exerciseURL + "/assign-workout-plan",
+        type:"post",
+        data: {
+            data_id: data_id,
+            routine_value: routine_value
+        },
+        success: function(response){
+            if(response = "SUCCESS") {
+                // retrieveData();  //Repaint table
+                console.log("updated")
+            } else {
+                alert(response);
+            }
+        },
+        error: function(err){
+            alert(err);
+        }
+        });
+    });
 }
