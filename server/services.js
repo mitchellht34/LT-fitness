@@ -122,14 +122,6 @@ app.get('/sign-up', function(req, res) {
     res.status(200).sendFile(path.join(__dirname + "/../client/html/sign-up.html"));
 })
 
-app.get('/home', function(req, res) {
-    if (req.session.loggedin) {
-        res.send('Welcome back, ' + req.session.username + '!');
-    } else {
-        res.send('Please login to view this page!');
-    }
-    res.end();
-});
 
 
 // app.get('/workouts', function(req, res) {
@@ -277,6 +269,14 @@ app.get('/home', function(req, res) {
       });
 
   });
+
+  app.get('/logout', function(req, res) {
+    console.log(req.session.loggedin)
+    // res.redirect('/')
+    req.session.loggedin = false;
+    console.log(req.session.loggedin)
+    res.end();
+});
 
     /*app.get('/read-records', function(req, res) {
         connection.query("SELECT * FROM exercises", function(err, rows) {
