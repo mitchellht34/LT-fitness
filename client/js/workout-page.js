@@ -24,13 +24,13 @@ function createExerciseTable(exerciseData) {
     tableHTML += "<tr>";
     console.log(day);
     console.log(exerciseData[0].workout_plan_id)
-    tableHTML += "<td>Day " + ((day % 3)) + "</td>";
+    tableHTML += "<th>Day " + ((day % 3)) + "</th>";
     for(var i=0; i<exerciseData.length; i++) {
         if(exerciseData[i].workout_plan_id != day){
             tableHTML += "<tr>";
             console.log(day);
             console.log(exerciseData[i].workout_plan_id)
-            tableHTML += "<td>Day " + ((day % 3) + 1) + "</td>";
+            tableHTML += "<th>Day " + ((day % 3) + 1) + "</th>";
             day++;
         }
         tableHTML += "<tr>";
