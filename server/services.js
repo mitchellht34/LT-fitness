@@ -38,12 +38,12 @@ var services_sql = function(app) {
                 }
                 res.redirect('/home');
             } else {
-                res.send('Incorrect Username and/or Password!');
+                res.redirect('/');
             }			
             res.end();
         });
     } else {
-        res.send('Please enter Username and Password!');
+        res.redirect('/');
         res.end();
     }
 });
