@@ -8,12 +8,22 @@ function retrieveData() {
         success: function(response){
             console.log("response: " + response);
             var data = JSON.parse(response);
-            createExerciseTable(data.exercises);
+            if(data.exercises.length > 0){
+                createExerciseTable(data.exercises);
+            }
+            else{
+                noResults();
+            }
         },
         error: function(err){
             console.log(err);
         }
     });
+}
+
+function noResults(){
+    var tableHTML = "<h2>Sorry, your trainer has not added any workouts for you just yet.</h2>";
+    $("#exerciseTable").html(tableHTML);
 }
 
 function createExerciseTable(exerciseData) {
@@ -37,16 +47,6 @@ function createExerciseTable(exerciseData) {
         tableHTML += "<td>" + exerciseData[i].exercise_name + "</td>";
         tableHTML += "<td>" + exerciseData[i].description + "</td>";
         tableHTML += "<td>" + exerciseData[i].reps + "</td>";
-        // tableHTML += "<td>" + exerciseData[i].bookTitle + "</td>";
-        // tableHTML += "<td>" + exerciseData[i].author + "</td>";
-        // tableHTML += "<td>" + exerciseData[i].publisher + "</td>";
-        // tableHTML += "<td>" + exerciseData[i].yearPublished + "</td>";
-        // tableHTML += "<td>" + exerciseData[i].isbn + "</td>";
-        // tableHTML += "<td>" 
-        // tableHTML += "<button class='btn btn-sm edit_btn delete-button' "
-        //             + "data-id='" + exerciseData[i].exercise_id 
-        //             + "'>See More</button>"
-        //             + "</td>";
         tableHTML += "</tr>";
     }
 
