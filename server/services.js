@@ -273,6 +273,7 @@ app.get('/sign-up', function(req, res) {
   app.get('/logout', function(req, res) {
     console.log(req.session.loggedin)
     // res.redirect('/')
+    req.session.admin = false;
     req.session.loggedin = false;
     console.log(req.session.loggedin)
     res.end();
