@@ -32,11 +32,6 @@ function createExerciseTable(data) {
         tableHTML += "<td>" + data[i].comfort + "</td>";
         tableHTML += "<td>" + data[i].injuries + "</td>";
         tableHTML += "<td>" + data[i].meal_interest + "</td>";
-        // tableHTML += "<td>" + exerciseData[i].bookTitle + "</td>";
-        // tableHTML += "<td>" + exerciseData[i].author + "</td>";
-        // tableHTML += "<td>" + exerciseData[i].publisher + "</td>";
-        // tableHTML += "<td>" + exerciseData[i].yearPublished + "</td>";
-        // tableHTML += "<td>" + exerciseData[i].isbn + "</td>";
         tableHTML += "<td>"
                     + "<input type='number' min=0 max=3 id='" + data[i].user_id + "'/>";
         

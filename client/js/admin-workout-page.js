@@ -37,16 +37,6 @@ function createExerciseTable(exerciseData) {
         }
         tableHTML += "<tr>";
         tableHTML += "<td>" + exerciseData[i].exercise_name + "</td>";
-        // tableHTML += "<td>" + exerciseData[i].bookTitle + "</td>";
-        // tableHTML += "<td>" + exerciseData[i].author + "</td>";
-        // tableHTML += "<td>" + exerciseData[i].publisher + "</td>";
-        // tableHTML += "<td>" + exerciseData[i].yearPublished + "</td>";
-        // tableHTML += "<td>" + exerciseData[i].isbn + "</td>";
-        // tableHTML += "<td>" 
-        //             +"<button class='btn btn-sm edit_btn delete-button' "
-        //             + "data-id='" + exerciseData[i].ID 
-        //             + "'>DELETE</button>"
-        //             + "</td>";
         tableHTML += "</tr>";
     }
 
